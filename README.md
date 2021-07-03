@@ -1,4 +1,3 @@
-# giphy-search
 
 ## 미구현
 
