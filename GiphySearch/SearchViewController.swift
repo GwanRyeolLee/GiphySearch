@@ -30,16 +30,20 @@ class SearchViewController: BaseUIViewController {
     
     func searchGif() {
         var parameters: [String: Any] = [:]
-        parameters["api_key"] = "uQDgkReJGLt6ATendvynLoMHuHnk5OQy"
+        parameters["api_key"] = API_KEY
         parameters["q"] = searchTextField.text
         APIManager.requestWithName(API_SEARCH, method: .get, parameters: parameters, responseType: GiphyListModel.self) { result in
             switch result {
             case .success(let res):
-                guard let data = res.data else {
+                guard let data = res.data, let pagination = res.pagination else {
                     return
                 }
                 self.giphyDataList = data
-                self.gifCollectionView.reloadData()
+                self.pagination = pagination
+                DispatchQueue.main.async {
+                    self.gifCollectionView.reloadData()
+                    self.gifCollectionView.collectionViewLayout.invalidateLayout()
+                }
             case .failure(_):
                 return
             }
@@ -74,8 +78,7 @@ extension SearchViewController: GiphyLayoutDelegate {
         
         let downloadedImageWidth = CGFloat(NSString(string: width).floatValue)
         let downloadedImageHeight = CGFloat(NSString(string: height).floatValue)
-        let insets = collectionView.contentInset
-        let collectionViewHalfWidth = (collectionView.bounds.width - (insets.left + insets.right)) / 2
+        let collectionViewHalfWidth = (collectionView.bounds.width / 2)
         let ratio = collectionViewHalfWidth / CGFloat(downloadedImageWidth)
         
         return downloadedImageHeight * ratio

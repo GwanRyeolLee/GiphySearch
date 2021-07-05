@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6AD42AF526929C4B0053CE6E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD42AF426929C4B0053CE6E /* Constants.swift */; };
 		79D3B490ADD253B4434FABD8 /* Pods_GiphySearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF7E61F1C1CC055D8E324B4 /* Pods_GiphySearch.framework */; };
 		AB0ACD8B26901DDA0004CA7B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0ACD8A26901DDA0004CA7B /* APIManager.swift */; };
 		AB0ACD9126901E760004CA7B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0ACD9026901E760004CA7B /* Utils.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		5E37E5450A952BCBB2D509D0 /* Pods-GiphySearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiphySearch.release.xcconfig"; path = "Target Support Files/Pods-GiphySearch/Pods-GiphySearch.release.xcconfig"; sourceTree = "<group>"; };
+		6AD42AF426929C4B0053CE6E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7BF7E61F1C1CC055D8E324B4 /* Pods_GiphySearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GiphySearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0ACD8A26901DDA0004CA7B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		AB0ACD9026901E760004CA7B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0ACDA22690313A0004CA7B /* Constants_API.swift */,
+				6AD42AF426929C4B0053CE6E /* Constants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				AB0ACDAC269039070004CA7B /* GiphyListModel.swift in Sources */,
 				AB0ACDA32690313A0004CA7B /* Constants_API.swift in Sources */,
 				AB648DF0268DA3DF00ED26F3 /* AppDelegate.swift in Sources */,
+				6AD42AF526929C4B0053CE6E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

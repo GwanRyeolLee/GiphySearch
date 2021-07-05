@@ -50,16 +50,14 @@ class GiphyLayout: UICollectionViewLayout {
             let indexPath = IndexPath(item: item, section: 0)
             
             let photoHeight = delegate?.collectionView(collectionView, heightForPhotoAtIndexPath: indexPath) ?? 180
-            let height = photoHeight
-            let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
-            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+            let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: photoHeight)
             
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-            attributes.frame = insetFrame
+            attributes.frame = frame
             cache.append(attributes)
             
             contentHeight = max(contentHeight, frame.maxY)
-            yOffset[column] = yOffset[column] + height
+            yOffset[column] = yOffset[column] + photoHeight
             
             column = column < (numberOfColumns - 1) ? (column + 1) : 0
         }
