@@ -71,17 +71,14 @@ extension SearchViewController: GiphyLayoutDelegate {
               let height = giphyDataList[indexPath.row].images?.original_still?.height else {
             return 0
         }
+        
         let downloadedImageWidth = CGFloat(NSString(string: width).floatValue)
         let downloadedImageHeight = CGFloat(NSString(string: height).floatValue)
         let insets = collectionView.contentInset
-        let collectionViewHalfWidth = collectionView.bounds.width - (insets.left + insets.right)
+        let collectionViewHalfWidth = (collectionView.bounds.width - (insets.left + insets.right)) / 2
+        let ratio = collectionViewHalfWidth / CGFloat(downloadedImageWidth)
         
-        let widthOffset = downloadedImageWidth - (collectionViewHalfWidth / 2)
-        let widthOffsetPercentage = (widthOffset * 100)/downloadedImageWidth
-        let heightOffset = (widthOffsetPercentage * downloadedImageHeight) / 100
-        let effectiveHeight = downloadedImageHeight - heightOffset
-
-        return effectiveHeight
+        return downloadedImageHeight * ratio
     }
 }
 
