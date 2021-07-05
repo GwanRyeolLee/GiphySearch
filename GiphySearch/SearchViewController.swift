@@ -22,12 +22,11 @@ class SearchViewController: BaseUIViewController {
         gifCollectionView.delegate = self
         gifCollectionView.dataSource = self
         searchTextField.delegate = self
+        gifCollectionView?.contentInset = UIEdgeInsets(top: 23, left: 10, bottom: 10, right: 10)
         gifCollectionView.register(UINib(nibName: "GifListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "gifCell")
         if let layout = gifCollectionView?.collectionViewLayout as? GiphyLayout {
             layout.delegate = self
         }
-        gifCollectionView?.contentInset = UIEdgeInsets(top: 23, left: 10, bottom: 10, right: 10)
-        searchGif()
     }
     
     func searchGif() {

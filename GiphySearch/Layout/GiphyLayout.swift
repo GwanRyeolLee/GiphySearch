@@ -33,7 +33,7 @@ class GiphyLayout: UICollectionViewLayout {
     }
     
     override func prepare() {
-        guard cache.isEmpty, let collectionView = collectionView else {
+        guard let collectionView = collectionView else {
             return
         }
         
