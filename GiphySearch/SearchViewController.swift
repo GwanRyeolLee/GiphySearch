@@ -26,6 +26,8 @@ class SearchViewController: BaseUIViewController {
         if let layout = gifCollectionView?.collectionViewLayout as? GiphyLayout {
             layout.delegate = self
         }
+        gifCollectionView?.contentInset = UIEdgeInsets(top: 23, left: 10, bottom: 10, right: 10)
+        searchGif()
     }
     
     func searchGif() {
@@ -40,10 +42,7 @@ class SearchViewController: BaseUIViewController {
                 }
                 self.giphyDataList = data
                 self.pagination = pagination
-                DispatchQueue.main.async {
-                    self.gifCollectionView.reloadData()
-                    self.gifCollectionView.collectionViewLayout.invalidateLayout()
-                }
+                self.gifCollectionView.reloadData()
             case .failure(_):
                 return
             }

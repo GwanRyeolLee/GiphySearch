@@ -24,4 +24,8 @@ class GifListCollectionViewCell: UICollectionViewCell {
             }
         }
     }
+    
+    override func prepareForReuse() {
+        imageView.image = nil
+    }
 }
