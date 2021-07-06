@@ -14,7 +14,7 @@ class SearchViewController: BaseUIViewController {
     
     var giphyDataList: [GiphyDataList]?
     var pagination: Pagenation?
-    
+    var searchText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +29,11 @@ class SearchViewController: BaseUIViewController {
         }
     }
     
-    func searchGif() {
+    func searchGif(page: Int = 0) {
         var parameters: [String: Any] = [:]
         parameters["api_key"] = API_KEY
-        parameters["q"] = searchTextField.text
+        parameters["q"] = searchText
+        parameters["offset"] = page
         APIManager.requestWithName(API_SEARCH, method: .get, parameters: parameters, responseType: GiphyListModel.self) { result in
             switch result {
             case .success(let res):
@@ -43,7 +44,8 @@ class SearchViewController: BaseUIViewController {
                 self.pagination = pagination
                 self.gifCollectionView.reloadData()
             case .failure(_):
-                return
+                self.giphyDataList = nil
+                self.pagination = nil
             }
         }
     }
@@ -65,6 +67,15 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.imageSet(imageUrl: url)
         return cell
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if(self.gifCollectionView.contentOffset.y >= (self.gifCollectionView.contentSize.height - self.gifCollectionView.bounds.size.height)) {
+            guard let page = pagination?.offset, let count = pagination?.count, let totalCount = pagination?.total_count else {
+                return
+            }
+            searchGif(page: page + 1)
+        }
+    }
 }
 
 extension SearchViewController: GiphyLayoutDelegate {
@@ -85,6 +96,7 @@ extension SearchViewController: GiphyLayoutDelegate {
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchText = textField.text
         searchGif()
         self.view.endEditing(true)
         return true

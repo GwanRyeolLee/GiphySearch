@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6ABC70802693F5C3000783D8 /* GifDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABC707E2693F5C3000783D8 /* GifDetailViewController.swift */; };
+		6ABC70812693F5C3000783D8 /* GifDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ABC707F2693F5C3000783D8 /* GifDetailViewController.xib */; };
 		6AD42AF526929C4B0053CE6E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD42AF426929C4B0053CE6E /* Constants.swift */; };
 		79D3B490ADD253B4434FABD8 /* Pods_GiphySearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF7E61F1C1CC055D8E324B4 /* Pods_GiphySearch.framework */; };
 		AB0ACD8B26901DDA0004CA7B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0ACD8A26901DDA0004CA7B /* APIManager.swift */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		5E37E5450A952BCBB2D509D0 /* Pods-GiphySearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiphySearch.release.xcconfig"; path = "Target Support Files/Pods-GiphySearch/Pods-GiphySearch.release.xcconfig"; sourceTree = "<group>"; };
+		6ABC707E2693F5C3000783D8 /* GifDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifDetailViewController.swift; sourceTree = "<group>"; };
+		6ABC707F2693F5C3000783D8 /* GifDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifDetailViewController.xib; sourceTree = "<group>"; };
 		6AD42AF426929C4B0053CE6E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7BF7E61F1C1CC055D8E324B4 /* Pods_GiphySearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GiphySearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0ACD8A26901DDA0004CA7B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -105,6 +109,15 @@
 				5E37E5450A952BCBB2D509D0 /* Pods-GiphySearch.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		6ABC70822693F5CC000783D8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AB0ACDBE269060C50004CA7B /* GifListCollectionViewCell.swift */,
+				AB0ACDBF269060C50004CA7B /* GifListCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		A26A59F0AEA94F3D48B099D8 /* Frameworks */ = {
@@ -193,8 +206,9 @@
 				AB648DEF268DA3DF00ED26F3 /* AppDelegate.swift */,
 				AB648E30268DA5CB00ED26F3 /* SearchViewController.swift */,
 				AB648E31268DA5CB00ED26F3 /* SearchViewController.xib */,
-				AB0ACDBE269060C50004CA7B /* GifListCollectionViewCell.swift */,
-				AB0ACDBF269060C50004CA7B /* GifListCollectionViewCell.xib */,
+				6ABC707E2693F5C3000783D8 /* GifDetailViewController.swift */,
+				6ABC707F2693F5C3000783D8 /* GifDetailViewController.xib */,
+				6ABC70822693F5CC000783D8 /* Cell */,
 			);
 			path = GiphySearch;
 			sourceTree = "<group>";
@@ -331,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB648DFC268DA3E000ED26F3 /* LaunchScreen.storyboard in Resources */,
+				6ABC70812693F5C3000783D8 /* GifDetailViewController.xib in Resources */,
 				AB648DF9268DA3E000ED26F3 /* Assets.xcassets in Resources */,
 				AB648E33268DA5CB00ED26F3 /* SearchViewController.xib in Resources */,
 				AB0ACDC1269060C60004CA7B /* GifListCollectionViewCell.xib in Resources */,
@@ -403,6 +418,7 @@
 				AB0ACD8B26901DDA0004CA7B /* APIManager.swift in Sources */,
 				AB648E4A268DA9A600ED26F3 /* BaseUIViewController.swift in Sources */,
 				AB0ACDC726907B1E0004CA7B /* GiphyLayout.swift in Sources */,
+				6ABC70802693F5C3000783D8 /* GifDetailViewController.swift in Sources */,
 				AB648E41268DA60C00ED26F3 /* UIViewController+Extension.swift in Sources */,
 				AB0ACD9126901E760004CA7B /* Utils.swift in Sources */,
 				AB648E39268DA60200ED26F3 /* UIView+Extension.swift in Sources */,
