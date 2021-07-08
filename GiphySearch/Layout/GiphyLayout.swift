@@ -37,6 +37,7 @@ class GiphyLayout: UICollectionViewLayout {
             return
         }
         
+        cache.removeAll()
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         var xOffset: [CGFloat] = []
         for column in 0..<numberOfColumns {

@@ -12,9 +12,10 @@ class SearchViewController: BaseUIViewController {
     @IBOutlet weak var gifCollectionView: UICollectionView!
     @IBOutlet weak var searchTextField: UITextField!
     
-    var giphyDataList: [GiphyDataList]?
+    var giphyDataList: [GiphyDataList] = []
     var pagination: Pagenation?
     var searchText: String?
+    var isRefresh = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +41,14 @@ class SearchViewController: BaseUIViewController {
                 guard let data = res.data, let pagination = res.pagination else {
                     return
                 }
-                self.giphyDataList = data
+                self.giphyDataList.append(contentsOf: data)
                 self.pagination = pagination
+//                self.gifCollectionView.contentOffset = .zero
                 self.gifCollectionView.reloadData()
+                self.gifCollectionView.collectionViewLayout.invalidateLayout()
+                self.isRefresh = false
             case .failure(_):
-                self.giphyDataList = nil
+                self.giphyDataList.removeAll()
                 self.pagination = nil
             }
         }
@@ -53,14 +57,14 @@ class SearchViewController: BaseUIViewController {
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return giphyDataList?.count ?? 0
+        return giphyDataList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gifCell", for: indexPath) as? GifListCollectionViewCell else {
             return UICollectionViewCell()
         }
-        guard let imageUrl = giphyDataList?[indexPath.row].images?.original_still?.url, let url = URL(string: imageUrl) else {
+        guard let imageUrl = giphyDataList[indexPath.row].images?.original_still?.url, let url = URL(string: imageUrl) else {
             return UICollectionViewCell()
         }
         
@@ -70,17 +74,19 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if(self.gifCollectionView.contentOffset.y >= (self.gifCollectionView.contentSize.height - self.gifCollectionView.bounds.size.height)) {
-            guard let page = pagination?.offset, let count = pagination?.count, let totalCount = pagination?.total_count else {
+            guard let page = pagination?.offset, let count = pagination?.count, let totalCount = pagination?.total_count, totalCount > count * page, !isRefresh else {
                 return
             }
+            print("refesh 호출")
             searchGif(page: page + 1)
+            isRefresh.toggle()
         }
     }
 }
 
 extension SearchViewController: GiphyLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        guard let giphyDataList = giphyDataList, let width = giphyDataList[indexPath.row].images?.original_still?.width,
+        guard let width = giphyDataList[indexPath.row].images?.original_still?.width,
               let height = giphyDataList[indexPath.row].images?.original_still?.height else {
             return 0
         }
@@ -96,6 +102,7 @@ extension SearchViewController: GiphyLayoutDelegate {
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.giphyDataList.removeAll()
         searchText = textField.text
         searchGif()
         self.view.endEditing(true)
