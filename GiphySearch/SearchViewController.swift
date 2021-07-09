@@ -19,13 +19,17 @@ class SearchViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setNavigationBar(hidden: true)
+        
         gifCollectionView.delegate = self
         gifCollectionView.dataSource = self
         searchTextField.delegate = self
-        gifCollectionView?.contentInset = UIEdgeInsets(top: 23, left: 10, bottom: 10, right: 10)
+        
+        gifCollectionView.contentInset = UIEdgeInsets(top: 23, left: 10, bottom: 10, right: 10)
         gifCollectionView.register(UINib(nibName: "GifListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "gifCell")
-        if let layout = gifCollectionView?.collectionViewLayout as? GiphyLayout {
+        
+        if let layout = gifCollectionView.collectionViewLayout as? GiphyLayout {
             layout.delegate = self
         }
     }
@@ -41,11 +45,13 @@ class SearchViewController: BaseUIViewController {
                 guard let data = res.data, let pagination = res.pagination else {
                     return
                 }
+                if !self.isRefresh {
+                    self.gifCollectionView.setContentOffset(.zero, animated: false)
+                }
+                
                 self.giphyDataList.append(contentsOf: data)
                 self.pagination = pagination
-//                self.gifCollectionView.contentOffset = .zero
                 self.gifCollectionView.reloadData()
-                self.gifCollectionView.collectionViewLayout.invalidateLayout()
                 self.isRefresh = false
             case .failure(_):
                 self.giphyDataList.removeAll()
@@ -77,7 +83,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             guard let page = pagination?.offset, let count = pagination?.count, let totalCount = pagination?.total_count, totalCount > count * page, !isRefresh else {
                 return
             }
-            print("refesh 호출")
+            
             searchGif(page: page + 1)
             isRefresh.toggle()
         }
@@ -86,8 +92,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
 extension SearchViewController: GiphyLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        guard let width = giphyDataList[indexPath.row].images?.original_still?.width,
-              let height = giphyDataList[indexPath.row].images?.original_still?.height else {
+        guard let original_still = giphyDataList[indexPath.row].images?.original_still,
+            let width = original_still.width, let height = original_still.height else {
             return 0
         }
         

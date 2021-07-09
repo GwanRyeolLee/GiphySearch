@@ -58,7 +58,7 @@ class GiphyLayout: UICollectionViewLayout {
             attributes.frame = insetFrame
             cache.append(attributes)
             
-            contentHeight = max(contentHeight, frame.maxY)
+            contentHeight = frame.maxY//max(contentHeight, frame.maxY)
             yOffset[column] = yOffset[column] + photoHeight
             
             column = column < (numberOfColumns - 1) ? (column + 1) : 0
