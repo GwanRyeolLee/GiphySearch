@@ -16,11 +16,21 @@ class GifListCollectionViewCell: UICollectionViewCell {
         
     }
 
-    func imageSet(imageUrl: URL) {
+    func setImage(imageUrl: String) {
+        
+        if let cacheImage = CacheManager.shared.object(forKey: imageUrl as NSString) {
+            imageView.image = cacheImage
+            return
+        }
+        
         DispatchQueue.global().async {
-            let data = try? Data(contentsOf: imageUrl)
+            guard let url = URL(string: imageUrl), let data = try? Data(contentsOf: url),
+                  let image = UIImage(data: data) else {
+                return
+            }
             DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: data!)
+                CacheManager.shared.setObject(image, forKey: imageUrl as NSString)
+                self.imageView.image = image
             }
         }
     }

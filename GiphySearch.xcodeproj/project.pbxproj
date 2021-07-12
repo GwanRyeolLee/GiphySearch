@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A72B8A8269BD09D0033710F /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A72B8A7269BD09D0033710F /* CacheManager.swift */; };
 		6ABC70802693F5C3000783D8 /* GifDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABC707E2693F5C3000783D8 /* GifDetailViewController.swift */; };
 		6ABC70812693F5C3000783D8 /* GifDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ABC707F2693F5C3000783D8 /* GifDetailViewController.xib */; };
 		6AD42AF526929C4B0053CE6E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD42AF426929C4B0053CE6E /* Constants.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		5E37E5450A952BCBB2D509D0 /* Pods-GiphySearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiphySearch.release.xcconfig"; path = "Target Support Files/Pods-GiphySearch/Pods-GiphySearch.release.xcconfig"; sourceTree = "<group>"; };
+		6A72B8A7269BD09D0033710F /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		6ABC707E2693F5C3000783D8 /* GifDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifDetailViewController.swift; sourceTree = "<group>"; };
 		6ABC707F2693F5C3000783D8 /* GifDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifDetailViewController.xib; sourceTree = "<group>"; };
 		6AD42AF426929C4B0053CE6E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0ACD8A26901DDA0004CA7B /* APIManager.swift */,
+				6A72B8A7269BD09D0033710F /* CacheManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				6ABC70802693F5C3000783D8 /* GifDetailViewController.swift in Sources */,
 				AB648E41268DA60C00ED26F3 /* UIViewController+Extension.swift in Sources */,
 				AB0ACD9126901E760004CA7B /* Utils.swift in Sources */,
+				6A72B8A8269BD09D0033710F /* CacheManager.swift in Sources */,
 				AB648E39268DA60200ED26F3 /* UIView+Extension.swift in Sources */,
 				AB0ACDC0269060C60004CA7B /* GifListCollectionViewCell.swift in Sources */,
 				AB648E32268DA5CB00ED26F3 /* SearchViewController.swift in Sources */,

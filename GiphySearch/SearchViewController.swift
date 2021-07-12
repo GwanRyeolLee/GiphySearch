@@ -70,11 +70,11 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gifCell", for: indexPath) as? GifListCollectionViewCell else {
             return UICollectionViewCell()
         }
-        guard let imageUrl = giphyDataList[indexPath.row].images?.original_still?.url, let url = URL(string: imageUrl) else {
+        guard let imageUrl = giphyDataList[indexPath.row].images?.original_still?.url else {
             return UICollectionViewCell()
         }
         
-        cell.imageSet(imageUrl: url)
+        cell.setImage(imageUrl: imageUrl)
         return cell
     }
     
