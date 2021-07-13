@@ -6,5 +6,6 @@ target 'GiphySearch' do
   use_frameworks!
 
 pod 'Alamofire', '< 5.2.2'
+pod 'Kingfisher'
 
 end

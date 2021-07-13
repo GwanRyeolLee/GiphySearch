@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class GifListCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet var imageView: AnimatedImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,25 +18,15 @@ class GifListCollectionViewCell: UICollectionViewCell {
     }
 
     func setImage(imageUrl: String) {
-        
-        if let cacheImage = CacheManager.shared.object(forKey: imageUrl as NSString) {
-            imageView.image = cacheImage
+        guard let url = URL(string: imageUrl) else {
             return
         }
-        
-        DispatchQueue.global().async {
-            guard let url = URL(string: imageUrl), let data = try? Data(contentsOf: url),
-                  let image = UIImage(data: data) else {
-                return
-            }
-            DispatchQueue.main.async {
-                CacheManager.shared.setObject(image, forKey: imageUrl as NSString)
-                self.imageView.image = image
-            }
-        }
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: url)
     }
     
     override func prepareForReuse() {
+        
         imageView.image = nil
     }
 }
