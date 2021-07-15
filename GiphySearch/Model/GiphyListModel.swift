@@ -23,14 +23,24 @@ struct GiphyDataList: Decodable {
     var username: String?
     var images: Images?
 }
-
 struct Images: Decodable {
-    var original_still: original_still?
+    var downsized: DownSized?
     
-    struct original_still: Decodable {
+    struct DownSized: Decodable {
         var height: String?
         var width: String?
         var size: String?
         var url: String?
     }
 }
+
+//struct Images: Decodable {
+//    var original_still: original_still?
+//
+//    struct original_still: Decodable {
+//        var height: String?
+//        var width: String?
+//        var size: String?
+//        var url: String?
+//    }
+//}

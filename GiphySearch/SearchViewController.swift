@@ -26,7 +26,7 @@ class SearchViewController: BaseUIViewController {
         gifCollectionView.dataSource = self
         searchTextField.delegate = self
         
-        gifCollectionView.contentInset = UIEdgeInsets(top: 23, left: 10, bottom: 10, right: 10)
+        gifCollectionView.contentInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
         gifCollectionView.register(UINib(nibName: "GifListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "gifCell")
         
         if let layout = gifCollectionView.collectionViewLayout as? GiphyLayout {
@@ -70,7 +70,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gifCell", for: indexPath) as? GifListCollectionViewCell else {
             return UICollectionViewCell()
         }
-        guard let imageUrl = giphyDataList[indexPath.row].images?.original_still?.url else {
+        guard let imageUrl = giphyDataList[indexPath.row].images?.downsized?.url else {
             return UICollectionViewCell()
         }
         
@@ -88,12 +88,16 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             isRefresh.toggle()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
 }
 
 extension SearchViewController: GiphyLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        guard let original_still = giphyDataList[indexPath.row].images?.original_still,
-            let width = original_still.width, let height = original_still.height else {
+        guard let downSized = giphyDataList[indexPath.row].images?.downsized,
+            let width = downSized.width, let height = downSized.height else {
             return 0
         }
         

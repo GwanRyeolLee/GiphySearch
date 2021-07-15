@@ -14,19 +14,18 @@ class GifListCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        imageView.kf.indicatorType = .activity
     }
 
     func setImage(imageUrl: String) {
         guard let url = URL(string: imageUrl) else {
             return
         }
-        imageView.kf.indicatorType = .activity
+        
         imageView.kf.setImage(with: url)
     }
     
     override func prepareForReuse() {
-        
         imageView.image = nil
     }
 }
