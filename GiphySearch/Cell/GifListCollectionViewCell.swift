@@ -26,6 +26,7 @@ class GifListCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        imageView.kf.cancelDownloadTask()
         imageView.image = nil
     }
 }
