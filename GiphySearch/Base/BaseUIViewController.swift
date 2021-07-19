@@ -25,6 +25,9 @@ class BaseUIViewController: UIViewController {
         
         let barBtnItem = UIBarButtonItem(customView: leftBarBtnItemView)
         navigationItem.leftBarButtonItems = [barBtnItem]
+        
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().titleTextAttributes = [.font : UIFont.systemFont(ofSize: 20, weight: .medium)]
     }
     
     override func viewWillAppear(_ animated: Bool) {
