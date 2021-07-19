@@ -39,3 +39,5 @@ pod install
 Target Ver 12.1
 
 Swift 5
+
+xib
