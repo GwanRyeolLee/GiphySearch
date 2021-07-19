@@ -1,6 +1,6 @@
 # GiphySearch
 
-<img src="https://user-images.githubusercontent.com/76767233/126121066-8a714f94-9c6a-479b-97f7-a8f1ee156fc3.gif"> <img src="https://user-images.githubusercontent.com/76767233/126120666-e2853f3d-5437-49ea-bfe6-02770789417e.gif">
+<img src="https://user-images.githubusercontent.com/76767233/126121997-86d9667a-cda7-49ff-b56e-8525d5328226.gif">
 
 프로젝트 내용 삽입
 
