@@ -36,6 +36,6 @@ pod install
 커맨드를 실행해 주면 됩니다.
 
 ## Spec
-Target : ver 12.1
+Target Ver 12.1
 
 Swift 5
