@@ -6,11 +6,23 @@
 //
 
 import UIKit
+import Kingfisher
 
 class GifDetailViewController: BaseUIViewController {
 
+    @IBOutlet var imageView: AnimatedImageView!
+    
+    var image: Images?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar(title: "detail(이미지이름?)")
+        setNavigationBar(title: "detail")
+        
+        guard let downsizedImage = image?.downsized, let url = URL(string: downsizedImage.url ?? ""),
+              let width = Int(downsizedImage.width ?? "0"), let height = Int(downsizedImage.height ?? "0") else {
+            return
+        }
+        imageView.frame.size = .init(width: width, height: height)
+        imageView.kf.setImage(with: url)
     }
 }

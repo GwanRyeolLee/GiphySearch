@@ -5,12 +5,12 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GifDetailViewController" customModule="GiphySearch" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="sza-ym-N5J" id="pte-lt-CBf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,43 +20,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kyd-Dr-8eF">
-                    <rect key="frame" x="0.0" y="44" width="414" height="480"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="440"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="400" translatesAutoresizingMaskIntoConstraints="NO" id="sza-ym-N5J">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="400" translatesAutoresizingMaskIntoConstraints="NO" id="sza-ym-N5J" customClass="AnimatedImageView" customModule="Kingfisher">
+                            <rect key="frame" x="0.0" y="20" width="414" height="400"/>
                         </imageView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lI7-hK-qF2">
-                            <rect key="frame" x="0.0" y="420" width="414" height="40"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIA-5q-JzW">
-                                    <rect key="frame" x="20" y="0.0" width="52" height="40"/>
-                                    <state key="normal" title="다운로드"/>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20e-a5-Hht">
-                                    <rect key="frame" x="342" y="0.0" width="52" height="40"/>
-                                    <state key="normal" title="공유하기"/>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="EIA-5q-JzW" firstAttribute="leading" secondItem="lI7-hK-qF2" secondAttribute="leading" constant="20" id="6e9-n8-V5H"/>
-                                <constraint firstAttribute="trailing" secondItem="20e-a5-Hht" secondAttribute="trailing" constant="20" id="CWM-Rw-nHP"/>
-                                <constraint firstAttribute="bottom" secondItem="EIA-5q-JzW" secondAttribute="bottom" id="DZY-TB-SEB"/>
-                                <constraint firstItem="20e-a5-Hht" firstAttribute="top" secondItem="lI7-hK-qF2" secondAttribute="top" id="LgU-47-ftj"/>
-                                <constraint firstAttribute="height" constant="40" id="Qv8-rG-whO"/>
-                                <constraint firstItem="EIA-5q-JzW" firstAttribute="top" secondItem="lI7-hK-qF2" secondAttribute="top" id="uM7-iy-Ral"/>
-                                <constraint firstAttribute="bottom" secondItem="20e-a5-Hht" secondAttribute="bottom" id="zer-GE-0uR"/>
-                            </constraints>
-                        </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="lI7-hK-qF2" secondAttribute="bottom" constant="20" id="Bej-hL-5t9"/>
-                        <constraint firstItem="lI7-hK-qF2" firstAttribute="top" secondItem="sza-ym-N5J" secondAttribute="bottom" constant="20" id="HOF-ve-MtZ"/>
                         <constraint firstItem="sza-ym-N5J" firstAttribute="leading" secondItem="Kyd-Dr-8eF" secondAttribute="leading" id="LbI-Bb-5et"/>
-                        <constraint firstAttribute="trailing" secondItem="lI7-hK-qF2" secondAttribute="trailing" id="MgN-yQ-UK5"/>
-                        <constraint firstItem="sza-ym-N5J" firstAttribute="top" secondItem="Kyd-Dr-8eF" secondAttribute="top" id="bMI-Ok-R7X"/>
-                        <constraint firstItem="lI7-hK-qF2" firstAttribute="leading" secondItem="Kyd-Dr-8eF" secondAttribute="leading" id="k30-w0-buO"/>
+                        <constraint firstItem="sza-ym-N5J" firstAttribute="top" secondItem="Kyd-Dr-8eF" secondAttribute="top" constant="20" id="bMI-Ok-R7X"/>
+                        <constraint firstAttribute="bottom" secondItem="sza-ym-N5J" secondAttribute="bottom" constant="20" id="tSd-Vx-k0O"/>
                         <constraint firstAttribute="trailing" secondItem="sza-ym-N5J" secondAttribute="trailing" id="xyh-Yj-fkn"/>
                     </constraints>
                 </view>
@@ -72,9 +46,4 @@
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

@@ -7,22 +7,13 @@
 
 import UIKit
 
-extension UIView {
+extension UIViewController {
     /// Xib 로드
     static func loadFromNib() -> Self {
-        let bundle = Bundle(for: self)
-        let nib = bundle.loadNibNamed("\(self)", owner: self, options: nil)
+        func instantiateFromNib<T: UIViewController>() -> T {
+            return T.init(nibName: String(describing: T.self), bundle: nil)
+        }
         
-        return nib!.first as! Self
-    }
-    
-    @IBInspectable var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = newValue
-            layer.masksToBounds = newValue > 0
-        }
+        return instantiateFromNib()
     }
 }

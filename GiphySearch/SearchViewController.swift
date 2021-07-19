@@ -12,7 +12,7 @@ class SearchViewController: BaseUIViewController {
     @IBOutlet weak var gifCollectionView: UICollectionView!
     @IBOutlet weak var searchTextField: UITextField!
     
-    var giphyDataList: [GiphyDataList] = []
+    var giphyDataList: [GiphyData] = []
     var pagination: Pagenation?
     var searchText: String?
     var isRefresh = false
@@ -78,6 +78,12 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = GifDetailViewController.loadFromNib()
+        vc.image = giphyDataList[indexPath.row].images
+        self.navigationController?.pushViewController(vc, animated: false)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if(self.gifCollectionView.contentOffset.y >= (self.gifCollectionView.contentSize.height - self.gifCollectionView.bounds.size.height)) {
             guard let page = pagination?.offset, let count = pagination?.count, let totalCount = pagination?.total_count, totalCount > count * page, !isRefresh else {
@@ -89,9 +95,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
+    
 }
 
 extension SearchViewController: GiphyLayoutDelegate {
