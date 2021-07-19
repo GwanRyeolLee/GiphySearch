@@ -1,6 +1,6 @@
 # GiphySearch
 
-**앱 구동 영상 삽입** 
+<img src="https://user-images.githubusercontent.com/76767233/126120209-48dd1635-ac8d-49f3-8e5d-97ed47672af0.gif">
 프로젝트 내용 삽입
 
 ## Getting Started / 어떻게 시작하나요?
