@@ -6,11 +6,15 @@
 
 ## Purpose 
 collcetionView의 Custom Layout 구현
+
 paging(무한스크롤) 구현
+
 image caching 구현
+
 
 ## Getting Started
 Giphy의 Search API를 사용하기 위해 API KEY 발급이 필요합니다.
+
 https://developers.giphy.com/docs/api <- 이곳에서 발급 받은 후 constants.swift 파일 내 변수에 할당해주면 됩니다.
 ```
 // constants.swift 
@@ -22,6 +26,7 @@ let API_KEY = "YOUR_API_KEY"
 아래와 같은 라이브러리를 사용하였습니다.
 
 Alamofire
+
 Kingfisher
 
 만약 프로젝트에서 해당 라이브러리를 찾지 못해 빌드가 되지 않으면 콘솔창에서 프로젝트 폴더로 이동 후
